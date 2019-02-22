@@ -1,0 +1,719 @@
+<RapidFit>
+
+	//================================================
+	// Formal Parameters to be fitted or fixed
+
+	<ParameterSet>
+
+		<PhysicsParameter>
+			<Name>F_s990</Name>
+			<Value>0.48</Value>
+			<Minimum>0.</Minimum>
+			<Maximum>0.5</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>delta_s990</Name>
+			<Value>2.3</Value> #0.7
+			<Minimum>-6.3</Minimum>
+			<Maximum>6.3</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>Csp990</Name>
+			<Value>0.8463</Value>
+			<Type>Fixed</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>F_s1008</Name>
+			<Value>0.04</Value>
+			<Minimum>0.</Minimum>
+			<Maximum>0.25</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>delta_s1008</Name>
+			<Value>1.6</Value>
+			<Minimum>-6.3</Minimum>
+			<Maximum>6.3</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>Csp1008</Name>
+			<Value>0.8756</Value>
+			<Type>Fixed</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>F_s1016</Name>
+			<Value>0.0045</Value>
+			<Minimum>0.</Minimum>
+			<Maximum>0.25</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>delta_s1016</Name>
+			<Value>0.9</Value>
+			<Minimum>-6.3</Minimum>
+			<Maximum>6.3</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>Csp1016</Name>
+			<Value>0.8478</Value>
+			<Type>Fixed</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+
+		<PhysicsParameter>
+			<Name>F_s1020</Name>
+			<Value>0.0073</Value>
+			<Minimum>0.</Minimum>
+			<Maximum>0.25</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>delta_s1020</Name>
+			<Value>-0.3</Value>
+			<Minimum>-6.3</Minimum>
+			<Maximum>6.3</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>Csp1020</Name>
+			<Value>0.8833</Value>
+			<Type>Fixed</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>F_s1024</Name>
+			<Value>0.06</Value>
+			<Minimum>0.</Minimum>
+			<Maximum>0.25</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>delta_s1024</Name>
+			<Value>-0.5</Value>
+			<Minimum>-6.3</Minimum>
+			<Maximum>6.3</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>Csp1024</Name>
+			<Value>0.9415</Value>
+			<Type>Fixed</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+
+		<PhysicsParameter>
+			<Name>F_s1032</Name>
+			<Value>0.14</Value>
+			<Minimum>0.</Minimum>
+			<Maximum>0.25</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>delta_s1032</Name>
+			<Value>-1.0</Value>
+			<Minimum>-6.3</Minimum>
+			<Maximum>6.3</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+		<PhysicsParameter>
+			<Name>Csp1032</Name>
+			<Value>0.9756</Value>
+			<Type>Fixed</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+
+		// True Physics Parameters for signal
+
+		<PhysicsParameter>
+			<Name>gamma</Name>
+			<Value>0.65789</Value>
+			<Minimum>0.0</Minimum>
+			<Maximum>2.0</Maximum>
+			<Type>Fixed</Type>
+			<Unit>ps^{-1}</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>GsGd</Name>
+			<Value>-0.004</Value>
+			#<Minimum>-0.25</Minimum>
+			#<Maximum>0.25</Maximum>
+			<Type>Free</Type>
+			<Unit>ps^{-1}</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>deltaGamma</Name>
+			<Value>0.1218</Value>
+			#<Minimum>-0.1</Minimum>
+			#<Maximum>0.3</Maximum>
+			<Type>Free</Type>
+			<Unit>ps^{-1}</Unit>
+            #<BlindString>BsDGs20152016</BlindString>
+            #<BlindScale>0.1</BlindScale>
+        </PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>Aperp_sq</Name>
+			<Value>0.25</Value>
+                        #<Minimum>0.</Minimum>
+                        #<Maximum>1.</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>Azero_sq</Name>
+			<Value>0.5</Value>
+                        #<Minimum>0.</Minimum>
+                        #<Maximum>1.</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>delta_para</Name>
+			<Value>3.1</Value>
+			<Maximum>9.4</Maximum>
+			<Minimum>-3.2</Minimum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>delta_perp</Name>
+			<Value>2.6</Value>
+			<Minimum>-3.2</Minimum>
+			<Maximum>9.4</Maximum>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>delta_zero</Name>
+			<Value>0.0</Value>
+			<Minimum>-3.3</Minimum>
+			<Maximum>3.3</Maximum>
+			<Type>Fixed</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>deltaM</Name>
+			<Value>17.766</Value>
+                        #<Minimum>10.</Minimum>
+                        #<Maximum>20.</Maximum>
+			<Type>Free</Type>
+			<Unit>ps-1</Unit>
+		</PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>Phi_s</Name>
+			<Value>-0.133</Value>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+            #<BlindString>BsPhis20152016</BlindString>
+            #<BlindScale>0.1</BlindScale>
+        </PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>lambda</Name>
+			<Value>0.950</Value>
+			<Type>Free</Type>
+			<Unit>Unitless</Unit>
+		</PhysicsParameter>
+
+                <PhysicsParameter>
+                        <Name>lambda_zero</Name>
+                        <Value>0.962</Value>
+                        <Type>Free</Type>
+                        <Unit>Unitless</Unit>
+                </PhysicsParameter>
+
+                <PhysicsParameter>
+                        <Name>lambda_para</Name>
+                        <Value>0.962</Value>
+                        <Type>Free</Type>
+                        <Unit>Unitless</Unit>
+                </PhysicsParameter>
+
+                <PhysicsParameter>
+                        <Name>lambda_perp</Name>
+                        <Value>0.962</Value>
+                        <Type>Free</Type>
+                        <Unit>Unitless</Unit>
+                </PhysicsParameter>
+
+                <PhysicsParameter>
+                        <Name>lambda_S</Name>
+                        <Value>0.962</Value>
+                        <Type>Free</Type>
+                        <Unit>Unitless</Unit>
+                </PhysicsParameter>
+
+                <PhysicsParameter>
+                        <Name>Phis_zero</Name>
+                        <Value>-0.1</Value>
+                        <Type>Free</Type>
+                        <Unit>Unitless</Unit>
+                    #<BlindString>BsPhiszero20152016</BlindString>
+                    #<BlindScale>0.2</BlindScale>
+                </PhysicsParameter>
+
+                <PhysicsParameter>
+                        <Name>Phis_para</Name>
+                        <Value>0.</Value>
+                        <Type>Free</Type>
+                        <Unit>Unitless</Unit>
+                    #<BlindString>BsPhisparaDel20152016</BlindString>
+                    #<BlindScale>0.2</BlindScale>
+                </PhysicsParameter>
+
+                <PhysicsParameter>
+                        <Name>Phis_perp</Name>
+                        <Value>0.</Value>
+                        <Type>Free</Type>
+                        <Unit>Unitless</Unit>
+                    #<BlindString>BsPhisperpDel20152016</BlindString>
+                    #<BlindScale>0.2</BlindScale>
+                </PhysicsParameter>
+
+                <PhysicsParameter>
+                        <Name>Phis_S</Name>
+                        <Value>0.</Value>
+                        <Type>Free</Type>
+                        <Unit>Unitless</Unit>
+                    #<BlindString>BsPhisSDel20152016</BlindString>
+                    #<BlindScale>0.2</BlindScale>
+                </PhysicsParameter>
+
+
+                //..................................
+                // Detector Parameters
+
+                // Mistag parameters
+
+                // Mistag calibration
+                <PhysicsParameter>
+                        <Name>mistagP1_OS</Name>
+                        <Value>0.8486</Value>
+                        <Type>Free</Type>
+                        <Minimum>0.5</Minimum>
+                        <Maximum>1.5</Maximum>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagP0_OS</Name>
+                        <Value>0.3890</Value>
+                        <Type>Free</Type>
+                        <Minimum>0.</Minimum>
+                        <Maximum>1.</Maximum>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagSetPoint_OS</Name>
+                        <Value>0.3602</Value>
+                        <Type>Fixed</Type>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagDeltaP1_OS</Name>
+                        <Value>0.0143</Value>
+                        <Type>Free</Type>
+                        <Minimum>-0.1</Minimum>
+                        <Maximum>0.1</Maximum>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagDeltaP0_OS</Name>
+                        <Value>0.0090</Value>
+                        <Type>Free</Type>
+                        <Minimum>-0.1</Minimum>
+                        <Maximum>0.1</Maximum>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagDeltaSetPoint_OS</Name>
+                        <Value>0.0</Value>
+                        <Type>Fixed</Type>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+
+                // Mistag calibration
+                <PhysicsParameter>
+                        <Name>mistagP1_SS</Name>
+                        <Value>0.9241</Value>
+                        <Type>Free</Type>
+                        <Minimum>0.</Minimum>
+                        <Maximum>2.</Maximum>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagP0_SS</Name>
+                        <Value>0.4325</Value>
+                        <Type>Free</Type>
+                        <Minimum>0.</Minimum>
+                        <Maximum>2.</Maximum>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagSetPoint_SS</Name>
+                        <Value>0.4167</Value>
+                        <Type>Fixed</Type>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagDeltaP1_SS</Name>
+                        <Value>0.0</Value>
+                        <Type>Free</Type>
+                        <Minimum>-0.1</Minimum>
+                        <Maximum>0.1</Maximum>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+               <PhysicsParameter>
+                        <Name>mistagDeltaP0_SS</Name>
+                        <Value>0.0</Value>
+                        <Type>Free</Type>
+                        <Minimum>-0.1</Minimum>
+                        <Maximum>0.1</Maximum>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+                <PhysicsParameter>
+                        <Name>mistagDeltaSetPoint_SS</Name>
+                        <Value>0.0</Value>
+                        <Type>Fixed</Type>
+                        <Unit> </Unit>
+                </PhysicsParameter>
+
+		<PhysicsParameter>
+			<Name>timeResolutionScale</Name>
+			<Value>1.00</Value>
+			<Type>Fixed</Type>
+		</PhysicsParameter>
+
+	</ParameterSet>
+
+
+	//==========================================
+	// Specify which minimiser to use.
+
+	<Minimiser>
+		<MinimiserName>Minuit</MinimiserName>
+		<MaxSteps>100000</MaxSteps>
+		<GradTolerance>0.1</GradTolerance>
+		<Quality>0</Quality>
+		#<ConfigureMinimiser>MinosErrors</ConfigureMinimiser>
+		#<ConfigureMinimiser>NoHesse</ConfigureMinimiser>
+	</Minimiser>
+
+	<FitFunction>
+		#<AlphaName>alpha</AlphaName>
+		<WeightName>sWeight</WeightName>
+		<FunctionName>NegativeLogLikelihoodThreaded</FunctionName>
+		<Threads>16</Threads>
+		#<UseGSLNumericalIntegration>True</UseGSLNumericalIntegration>
+		#<FixedIntegrationPoints>1000000</FixedIntegrationPoints>
+		<SetIntegratorTest>False</SetIntegratorTest>
+		<NormaliseWeights>True</NormaliseWeights>
+		#<Strategy>Petes</Strategy>
+		<OffSetNLL>True</OffSetNLL>
+	</FitFunction>
+
+
+	<NumberRepeats>1</NumberRepeats>
+
+
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	// The commonpdf and phase space to all segments
+
+	<CommonPDF>
+		<PDF>
+			<Name>Bs2JpsiPhi_Signal_v9</Name>
+			<ConfigurationParameter>UseHelicityBasis:True</ConfigurationParameter>
+			<ConfigurationParameter>useGsGd:True</ConfigurationParameter>
+			<ConfigurationParameter>AngularAcceptanceFile:AngAccWeights_2015_data_015_biased.root</ConfigurationParameter>
+			<ConfigurationParameter>AngularAcceptanceIgnoreNumerator:True</ConfigurationParameter>
+			<ConfigurationParameter>UseTimeAcceptance:False</ConfigurationParameter>
+			<ConfigurationParameter>UseEventResolution:True</ConfigurationParameter>
+                        <ConfigurationParameter>UsePolynomialAcceptance:True</ConfigurationParameter>
+                        <ConfigurationParameter>PolynomialAcceptanceFile:TimeAccCoeff_2015_data_015_biased.txt</ConfigurationParameter>
+			<ConfigurationParameter>useNewMistagModel:True</ConfigurationParameter>
+			<ConfigurationParameter>Mistag3fbModel:True</ConfigurationParameter>
+			<ConfigurationParameter>FloatCombinedCalib:True</ConfigurationParameter>
+			<ConfigurationParameter>ResolutionModel:ResolutionModel</ConfigurationParameter>
+			<ConfigurationParameter>useMultiplePhis:False</ConfigurationParameter>
+		</PDF>
+	</CommonPDF>
+
+	<CommonPhaseSpace>
+		<PhaseSpaceBoundary>
+			<Observable>
+				<Name>time</Name>
+                		<TF1>B_LOKI_DTF_CTAU/0.29979245</TF1>
+				<Minimum>0.3</Minimum>
+				<Maximum>15.0</Maximum>
+				<Unit>ps</Unit>
+			</Observable>
+			<Observable>
+				<Name>helcosthetaK</Name>
+                		<TF1>cosThetaKRef</TF1>
+				<Minimum>-1.0</Minimum>
+				<Maximum>1.0</Maximum>
+				<Unit> </Unit>
+			</Observable>
+			<Observable>
+				<Name>helphi</Name>
+				<TF1>(phiHelRef+TMath::Pi()-(phiHelRef>0.)*(2.*TMath::Pi()))</TF1>
+				<Minimum>-3.1416</Minimum>
+				<Maximum>3.1416</Maximum>
+				<Unit>rad</Unit>
+			</Observable>
+			<Observable>
+				<Name>helcosthetaL</Name>
+                		<TF1>cosThetaMuRef</TF1>
+				<Minimum>-1.0</Minimum>
+				<Maximum>1.0</Maximum>
+				<Unit> </Unit>
+			</Observable>
+			<Observable>
+				<Name>tagdecision_os</Name>
+				<TF1>tagos_dec_new</TF1>
+				<Value>1.</Value>
+				<Value>0.</Value>
+				<Value>-1.</Value>
+				<Unit> </Unit>
+			</Observable>
+			<Observable>
+				<Name>tagdecision_ss</Name>
+                                <TF1>B_SSKaonLatest_TAGDEC</TF1>
+				<Value>1.</Value>
+				<Value>0.</Value>
+				<Value>-1.</Value>
+				<Unit> </Unit>
+			</Observable>
+			<Observable>
+				<Name>tagomega_os</Name>
+				<TF1>tagos_eta_new</TF1>
+				<Minimum>0.</Minimum>
+				<Maximum>0.5</Maximum>
+				<Unit> </Unit>
+			</Observable>
+			<Observable>
+				<Name>tagomega_ss</Name>
+				<TF1>B_SSKaonLatest_TAGETA</TF1>
+				<Minimum>0.</Minimum>
+				<Maximum>0.5</Maximum>
+				<Unit> </Unit>
+			</Observable>
+			<Observable>
+				<Name>eventResolution</Name>
+       			        <TF1>0.01297+(B_LOKI_DTF_CTAUERR/0.29979245)*0.8446</TF1>
+				<Minimum>0.0</Minimum>
+				<Maximum>0.15</Maximum>
+				<Unit> </Unit>
+			</Observable>
+			<Observable>
+				<Name>sWeight</Name>
+                		<TF1>sw</TF1>
+				<Minimum>-10</Minimum>
+				<Maximum>10</Maximum>
+				<Unit> </Unit>
+			</Observable>
+		</PhaseSpaceBoundary>
+	</CommonPhaseSpace>
+
+
+
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	<ToFit>
+		<CommonPDF>True</CommonPDF>
+		<PDFConfigurator>
+			<AppendParameterNames>F_s:delta_s:Csp:990</AppendParameterNames>
+		</PDFConfigurator>
+		<DataSet>
+			<Source>File</Source>
+                        <FileName>/eos/lhcb/wg/B2CC/phis-run2/data/BsJpsiPhi_Data_2015_UpDown_20190123_tmva_cut58_sel_comb_sw_corrLb.root</FileName>
+			<CutString>(X_M>=990)&&(1008>X_M)&&B_Hlt2DiMuonDetachedJPsiDecision_TOS&&!Jpsi_Hlt1DiMuonHighMassDecision_TOS&&(B_Hlt1TrackMuonDecision_TOS||B_Hlt1TwoTrackMVADecision_TOS)</CutString>
+			<NumberEvents>1000000000</NumberEvents>
+
+			<CommonPhaseSpace>
+				<Observable>
+					<Name>alpha</Name>
+					<TF1>0.39125</TF1>
+					<Minimum>-50.0</Minimum>
+					<Maximum>50.0</Maximum>
+					<Unit> </Unit>
+				</Observable>
+			</CommonPhaseSpace>
+
+		</DataSet>
+	</ToFit>
+
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	<ToFit>
+		<CommonPDF>True</CommonPDF>
+		<PDFConfigurator>
+			<AppendParameterNames>F_s:delta_s:Csp:1008</AppendParameterNames>
+		</PDFConfigurator>
+		<DataSet>
+			<Source>File</Source>
+                        <FileName>/eos/lhcb/wg/B2CC/phis-run2/data/BsJpsiPhi_Data_2015_UpDown_20190123_tmva_cut58_sel_comb_sw_corrLb.root</FileName>
+			<CutString>(X_M>=1008)&&(1016>X_M)&&B_Hlt2DiMuonDetachedJPsiDecision_TOS&&!Jpsi_Hlt1DiMuonHighMassDecision_TOS&&(B_Hlt1TrackMuonDecision_TOS||B_Hlt1TwoTrackMVADecision_TOS)</CutString>
+			<NumberEvents>100000000</NumberEvents>
+			<CommonPhaseSpace>
+				<Observable>
+					<Name>alpha</Name>
+					<TF1>0.75803</TF1>
+					<Minimum>-50.0</Minimum>
+					<Maximum>50.0</Maximum>
+					<Unit> </Unit>
+				</Observable>
+			</CommonPhaseSpace>
+
+		</DataSet>
+	</ToFit>
+
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	<ToFit>
+		<CommonPDF>True</CommonPDF>
+		<PDFConfigurator>
+			<AppendParameterNames>F_s:delta_s:Csp:1016</AppendParameterNames>
+		</PDFConfigurator>
+		<DataSet>
+			<Source>File</Source>
+                        <FileName>/eos/lhcb/wg/B2CC/phis-run2/data/BsJpsiPhi_Data_2015_UpDown_20190123_tmva_cut58_sel_comb_sw_corrLb.root</FileName>
+			<CutString>(X_M>=1016)&&(1020>X_M)&&B_Hlt2DiMuonDetachedJPsiDecision_TOS&&!Jpsi_Hlt1DiMuonHighMassDecision_TOS&&(B_Hlt1TrackMuonDecision_TOS||B_Hlt1TwoTrackMVADecision_TOS)</CutString>
+			<NumberEvents>10000000</NumberEvents>
+			<CommonPhaseSpace>
+				<Observable>
+					<Name>alpha</Name>
+					<TF1>0.91745</TF1>
+					<Minimum>-50.0</Minimum>
+					<Maximum>50.0</Maximum>
+					<Unit> </Unit>
+				</Observable>
+			</CommonPhaseSpace>
+
+		</DataSet>
+	</ToFit>
+
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	<ToFit>
+		<CommonPDF>True</CommonPDF>
+		<PDFConfigurator>
+			<AppendParameterNames>F_s:delta_s:Csp:1020</AppendParameterNames>
+		</PDFConfigurator>
+		<DataSet>
+			<Source>File</Source>
+                        <FileName>/eos/lhcb/wg/B2CC/phis-run2/data/BsJpsiPhi_Data_2015_UpDown_20190123_tmva_cut58_sel_comb_sw_corrLb.root</FileName>
+			<CutString>(X_M>=1020)&&(1024>X_M)&&B_Hlt2DiMuonDetachedJPsiDecision_TOS&&!Jpsi_Hlt1DiMuonHighMassDecision_TOS&&(B_Hlt1TrackMuonDecision_TOS||B_Hlt1TwoTrackMVADecision_TOS)</CutString>
+			<NumberEvents>10000000</NumberEvents>
+			<CommonPhaseSpace>
+				<Observable>
+					<Name>alpha</Name>
+					<TF1>0.90198</TF1>
+					<Minimum>-50.0</Minimum>
+					<Maximum>50.0</Maximum>
+					<Unit> </Unit>
+				</Observable>
+			</CommonPhaseSpace>
+
+		</DataSet>
+	</ToFit>
+
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	<ToFit>
+		<CommonPDF>True</CommonPDF>
+		<PDFConfigurator>
+			<AppendParameterNames>F_s:delta_s:Csp:1024</AppendParameterNames>
+		</PDFConfigurator>
+		<DataSet>
+			<Source>File</Source>
+                        <FileName>/eos/lhcb/wg/B2CC/phis-run2/data/BsJpsiPhi_Data_2015_UpDown_20190123_tmva_cut58_sel_comb_sw_corrLb.root</FileName>
+			<CutString>(X_M>=1024)&&(1032>X_M)&&B_Hlt2DiMuonDetachedJPsiDecision_TOS&&!Jpsi_Hlt1DiMuonHighMassDecision_TOS&&(B_Hlt1TrackMuonDecision_TOS||B_Hlt1TwoTrackMVADecision_TOS)</CutString>
+			<NumberEvents>10000000</NumberEvents>
+
+			<CommonPhaseSpace>
+				<Observable>
+					<Name>alpha</Name>
+					<TF1>0.75651</TF1>
+					<Minimum>-50.0</Minimum>
+					<Maximum>50.0</Maximum>
+					<Unit> </Unit>
+				</Observable>
+			</CommonPhaseSpace>
+
+		</DataSet>
+	</ToFit>
+
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	//===============================================================================================
+	<ToFit>
+		<CommonPDF>True</CommonPDF>
+		<PDFConfigurator>
+			<AppendParameterNames>F_s:delta_s:Csp:1032</AppendParameterNames>
+		</PDFConfigurator>
+		<DataSet>
+			<Source>File</Source>
+                        <FileName>/eos/lhcb/wg/B2CC/phis-run2/data/BsJpsiPhi_Data_2015_UpDown_20190123_tmva_cut58_sel_comb_sw_corrLb.root</FileName>
+			<CutString>(X_M>=1032)&&(1050>=X_M)&&B_Hlt2DiMuonDetachedJPsiDecision_TOS&&!Jpsi_Hlt1DiMuonHighMassDecision_TOS&&(B_Hlt1TrackMuonDecision_TOS||B_Hlt1TwoTrackMVADecision_TOS)</CutString>
+			<NumberEvents>10000000</NumberEvents>
+			<CommonPhaseSpace>
+				<Observable>
+					<Name>alpha</Name>
+					<TF1>0.50989</TF1>
+					<Minimum>-50.0</Minimum>
+					<Maximum>50.0</Maximum>
+					<Unit> </Unit>
+				</Observable>
+			</CommonPhaseSpace>
+
+		</DataSet>
+	</ToFit>
+</RapidFit>
+
+

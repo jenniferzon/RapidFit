@@ -379,7 +379,8 @@ bool Bd2JpsiKstar_sWave_Fs::SetPhysicsParameters( ParameterSet * NewParameterSet
 	AparaAs    = sqrt(Apara_sq)*sqrt(As_sq);
 	AperpAs	   = sqrt(Aperp_sq)*sqrt(As_sq);
 	AzeroAs    = sqrt(Azero_sq)*sqrt(As_sq);
-
+        //cout << "gamma " << gamma << ", Apara_sq " << Rpara_sq << ", Aperp_sq " << Rperp_sq << ", Azero_sq " << Rzero_sq << ", delta_para " << delta_para << ", delta_perp " << delta_perp << ", Csp " << Csp << endl;
+        //cout << "delta_s " << delta_s << ", delta_s + delta_perp " << delta_s + delta_perp << endl;
 	return isOK;
 }
 
@@ -407,7 +408,7 @@ double Bd2JpsiKstar_sWave_Fs::Evaluate(DataPoint * measurement)
 	KstarFlavour = measurement->GetObservable( KstarFlavourName )->GetValue();
 
 	//cout << gamma << " " << Aperp_sq << " " << Azero_sq << endl;
-
+	//cout << "cosTheta " << cosTheta << ", phi " << phi << ", cosPsi " << cosPsi << ", time " << time << ", KstarFlavour " << KstarFlavour << endl;
 	if(timeRes1Frac >= 0.9999)
 	{
 		// Set the member variable for time resolution to the first value and calculate
@@ -426,7 +427,7 @@ double Bd2JpsiKstar_sWave_Fs::Evaluate(DataPoint * measurement)
 		returnValue = timeRes1Frac*val1 + (1. - timeRes1Frac)*val2;
 	}
 
-
+	//cout << "v1 with timeRes " << returnValue << endl;
 	if( componentIndex == 0 )
 	{
 		if( (returnValue <= 0.) || std::isnan(returnValue) )
@@ -444,7 +445,7 @@ double Bd2JpsiKstar_sWave_Fs::Evaluate(DataPoint * measurement)
 			throw(10);
 		}
 	}
-
+        //cout << "EVALUATE IS " << returnValue << endl;
 	return returnValue;
     
 }
@@ -456,6 +457,8 @@ double Bd2JpsiKstar_sWave_Fs::buildPDFnumerator()
 	double f1, f2, f3, f4, f5, f6, f7, f8, f9, f10;
 
     Mathematics::getBs2JpsiPhiAngularFunctionsWithSwave( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, cosTheta, phi, cosPsi );
+    //cout << "f1 " << f1 << ", f2 " << f2 << ", f3 " << f3 << ", f4 " << f4 << ", f5 " << f5 << ", f6 " << f6 << ", f7 " << f7 << ", f8 " << f8 << ", f9 " << f9 << ", f10 " << f10 << endl;
+
     //this->getAngularFunctionsTransversity( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, cosTheta, phi, cosPsi );
 
 	// The time dependent amplitudes as defined in roadmap Eqns 48 -> 59  //No tagging so only need 2 (h± pg 72)
@@ -468,7 +471,7 @@ double Bd2JpsiKstar_sWave_Fs::buildPDFnumerator()
 			, ImAparaAperpB, ReAzeroAparaB, ImAzeroAperpB
 			, AsAsB, ReAparaAsB, ImAperpAsB, ReAzeroAsB
 			);
-
+	//ReAparaAsB = ReAzeroAsB = 0.;
 	double v1(0.);
 	if ( !_plotAllComponents )
 	{
@@ -547,13 +550,18 @@ double Bd2JpsiKstar_sWave_Fs::buildPDFnumerator()
 					+ Csp * f9 * ImAperpAsB * q()
 					+ Csp * f10 * ReAzeroAsB;
 				break;
+
 		}
 	}
     
 	if( useTimeAcceptance() ) v1  = v1 * timeAcc->getValue(time);
 
     if( ! useFlatAngularDistribution ) v1  *=  angularFactor();
-    
+        //cout << "ImApara*Aperp*timeFac4 "<< ImAparaAperpB << ", ReApara*As*timeFac8 " << ReAparaAsB << ", ImAperp*As*timeFac9 " << ImAperpAsB << ", ReAzeroAsB*timeFac10 " << ReAzeroAsB  << endl;
+	//cout << "f4 " << f4 << ", f7 " << f7 << ", f8 " << f8 << ", f9 " << f9 << ", f10 " << f10 << endl;
+	//cout << "q " << q() << endl;
+	//cout << "v1 " << v1 << endl;
+        //cout << "sum1/f1*h1(t) " << 1. << ", h2(t) " << 1. << ", h3(t) " << 1. << ", h4(t) " << q() << ", h5(t) " <<  1. << ", h6(t) " << q() << ", h7(t) " <<  1. << ", h8(t) " <<  Csp << ", h9(t) " <<  Csp*q() << ", h10(t) " <<  Csp << endl; 
 	return v1;
 }
 
@@ -619,7 +627,7 @@ double Bd2JpsiKstar_sWave_Fs::Normalisation(DataPoint * measurement, PhaseSpaceB
 			throw(1);
 		}
 	}
-
+	//cout << "NORMALISATION IS " << returnValue << endl;
     return returnValue;
         
 	//return -1 ;
@@ -658,15 +666,56 @@ double Bd2JpsiKstar_sWave_Fs::buildCompositePDFdenominator( )
 
 
 
-
-double Bd2JpsiKstar_sWave_Fs::NormAnglesOnlyForAcceptanceWeights(DataPoint * measurement, PhaseSpaceBoundary * boundary)
-{
+double Bd2JpsiKstar_sWave_Fs::HelpNormAngles( DataPoint * measurement, PhaseSpaceBoundary * boundary ){
 	_datapoint = measurement;
 	(void) boundary;
 	double returnValue;
 	time = measurement->GetObservable( timeName )->GetValue();
 	KstarFlavour = measurement->GetObservable( KstarFlavourName )->GetValue();
-    
+ 
+        if(timeRes1Frac >= 0.9999)
+        {
+                timeRes = timeRes1;
+                returnValue =  buildPDFdenominatorAngles();
+        }
+        else
+        {
+                timeRes = timeRes1;
+                double val1 = buildPDFdenominatorAngles();
+                timeRes = timeRes2;
+                double val2 = buildPDFdenominatorAngles();
+                returnValue = timeRes1Frac*val1 + (1. - timeRes1Frac)*val2;
+
+        }
+        if( componentIndex == 0 )
+        {
+                if( (returnValue <= 0.) || std::isnan(returnValue) )
+                {
+                        cout << " Bd2JpsiKstar_sWave_Fs::Normalisation() returns <=0 or nan " << endl ;
+                        cout << " AT    " << Aperp_sq ;
+                        cout << " AP    " << Apara_sq ;
+                        cout << " A0    " << Azero_sq;
+                        cout << " As   " << As_sq;
+                        cout << "   Dperp    " << delta_perp;
+                        cout << "   Dpara    " << delta_para;
+                        cout << "   Ds     " << delta_s << endl;
+                        cout << "   gamma   " << gamma << endl;
+
+                        throw(2);
+ 		}
+	}         
+	return returnValue = buildPDFdenominatorAngles();
+}
+
+double Bd2JpsiKstar_sWave_Fs::NormAnglesOnlyForAcceptanceWeights(DataPoint * measurement, PhaseSpaceBoundary * boundary)
+{
+	cout << " ------------------ Norm Angles ----------" << endl;
+	_datapoint = measurement;
+	(void) boundary;
+	double returnValue;
+	time = measurement->GetObservable( timeName )->GetValue();
+	KstarFlavour = measurement->GetObservable( KstarFlavourName )->GetValue();
+ 	cout << time << " and " << KstarFlavour << endl;   
 	//First job for any new set of parameters is to Cache the time integrals
 
 
@@ -688,7 +737,7 @@ double Bd2JpsiKstar_sWave_Fs::NormAnglesOnlyForAcceptanceWeights(DataPoint * mea
 		returnValue = timeRes1Frac*val1 + (1. - timeRes1Frac)*val2;
 
 	}
-
+	// cout << "returnValue = " << returnValue << endl;
 	if( componentIndex == 0 )
 	{
 		if( (returnValue <= 0.) || std::isnan(returnValue) )
@@ -728,7 +777,7 @@ double Bd2JpsiKstar_sWave_Fs::buildPDFdenominator()
 			, cachedAperpAsIntB
 			, cachedAzeroAsIntB
 			);
-
+	//cachedAparaAsIntB = cachedAzeroAsIntB = 0.;
 
 	double v1= cachedAzeroAzeroIntB * angAccI1
 		+ cachedAparaAparaIntB * angAccI2
@@ -819,6 +868,7 @@ double Bd2JpsiKstar_sWave_Fs::buildPDFdenominator()
 }
 }
 */
+//cout << " angAccI4 " << angAccI4 << ", angAccI8 " << angAccI8 << ", angAccI9 " << angAccI9 << ", angAccI10 " << angAccI10 << ", v1 " << v1 << endl;
 return v1;
 }
 
@@ -827,6 +877,7 @@ double Bd2JpsiKstar_sWave_Fs::buildPDFdenominatorAngles()  //test method
 
 	double f1, f2, f3, f4, f5, f6, f7, f8, f9, f10;
     Mathematics::getBs2JpsiPhiAngularFunctionsWithSwave( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, cosTheta, phi, cosPsi );
+
     //this->getAngularFunctionsTransversity( f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, cosTheta, phi, cosPsi );
     
 
@@ -880,7 +931,7 @@ void Bd2JpsiKstar_sWave_Fs::getTimeDependentAmplitudes(
 
 		evaluationCacheValid = true;
 	}
-
+        //cout << "N1 " << cachedAzero*cachedAzero << ", N2 " << cachedApara*cachedApara << ", N3 " << cachedAperp*cachedAperp << ", N4 " << cachedApara*cachedAperp << ", N5 " << cachedAzero*cachedApara << ", N6 " << cachedAzero*cachedAperp << ", N7 " << cachedAs*cachedAs << ", N8 " << cachedAs*Csp*cachedApara << ", N9 " << cachedAs*Csp*cachedAperp << ", N10 " << cachedAs*Csp*cachedAzero << endl;
 
 
 	// Now calculate the amplitudes
@@ -901,7 +952,9 @@ void Bd2JpsiKstar_sWave_Fs::getTimeDependentAmplitudes(
 
 
 	//if ( std::isnan(ImAparaAperp)) cout << Azero_sq << " " << Apara_sq << " " << Aperp_sq << " " << Exp << endl;
-
+	//cout << "Apara*Aperp" << cachedApara*cachedAperp << ", Apara*As " << cachedApara*cachedAs << ", Aperp*As " << cachedAperp*cachedAs << ", Azero*As " << cachedAzero*cachedAs << endl;
+	//cout << "cachedSinDeltaPerpPara " << cachedSinDeltaPerpPara << ", cachedCosDeltaParaS " << cachedCosDeltaParaS << ", cachedSinDeltaPerpS " << cachedSinDeltaPerpS << ", cachedCosDeltaS " << cachedCosDeltaS << endl;
+	//cout << "exp " << Exp << endl;
 	return;
 }
 
@@ -955,7 +1008,7 @@ void Bd2JpsiKstar_sWave_Fs::getTimeAmplitudeIntegrals(
 	AparaAsInt = AparaAs * cachedCosDeltaParaS * ExpInt;
 	AperpAsInt = AperpAs * cachedSinDeltaPerpS * ExpInt;
 	AzeroAsInt = AzeroAs * cachedCosDeltaS * ExpInt;
-
+	//cout << "ExpInt " << ExpInt << ", AparaAperpInt " << AparaAperpInt << ", AparaAsInt " << AparaAsInt << ", AperpAsInt " << AperpAsInt << ", AzeroAsInt " << AzeroAsInt << endl;
 	return;
 }
 
@@ -1188,6 +1241,5 @@ void Bd2JpsiKstar_sWave_Fs::getAngularFunctionsTransversity( double &f1, double 
     f8 = Bs2JpsiPhi_Angular_Terms::TangleFactorReASAP( input ) ;
     f9 = Bs2JpsiPhi_Angular_Terms::TangleFactorImASAT( input ) ;
     f10 = Bs2JpsiPhi_Angular_Terms::TangleFactorReASA0( input ) ;
-    
     return ;
 }

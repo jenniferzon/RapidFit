@@ -1637,7 +1637,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorA0A0( )
 
         double xk = ( 1.0 + std::abs(lambda_zeroVal) * std::abs(lambda_zeroVal) ) / 2.;
 	ak = 1.0;
-	bk = std::abs(lambda_zeroVal) / xk * cos(phis_zeroVal);
+	bk = 1.0 * std::abs(lambda_zeroVal) / xk * cos(phis_zeroVal);
 	ck = ( 1.0 - std::abs(lambda_zeroVal) * std::abs(lambda_zeroVal) ) / (2. * xk) ;
 	dk = std::abs(lambda_zeroVal) / xk * sin(phis_zeroVal);
 
@@ -1650,7 +1650,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorA0A0Int( )
 
         double xk = ( 1.0 + std::abs(lambda_zeroVal) * std::abs(lambda_zeroVal) ) / 2.;
 	ak = 1.0;
-	bk = std::abs(lambda_zeroVal) / xk * cos(phis_zeroVal);
+	bk = 1.0 * std::abs(lambda_zeroVal) / xk * cos(phis_zeroVal);
 	ck = ( 1.0 - std::abs(lambda_zeroVal) * std::abs(lambda_zeroVal) ) / (2. * xk) ;
 	dk = std::abs(lambda_zeroVal) / xk * sin(phis_zeroVal);
 
@@ -1664,7 +1664,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorAPAP( )
 
         double xk = ( 1.0 + std::abs(lambda_paraVal) * std::abs(lambda_paraVal) ) / 2.;
        	ak = 1.0;
-	bk = std::abs(lambda_paraVal) / xk * cos(phis_paraVal);
+	bk = 1.0 * std::abs(lambda_paraVal) / xk * cos(phis_paraVal);
 	ck = ( 1.0 - std::abs(lambda_paraVal) * std::abs(lambda_paraVal) ) / (2. * xk) ;
 	dk = std::abs(lambda_paraVal) / xk * sin(phis_paraVal);
 
@@ -1677,7 +1677,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorAPAPInt( )
 
         double xk = ( 1.0 + std::abs(lambda_paraVal) * std::abs(lambda_paraVal) ) / 2.;
 	ak = 1.0;
-	bk = std::abs(lambda_paraVal) / xk * cos(phis_paraVal);
+	bk = 1.0 * std::abs(lambda_paraVal) / xk * cos(phis_paraVal);
 	ck = ( 1.0 - std::abs(lambda_paraVal) * std::abs(lambda_paraVal) ) / (2. * xk) ;
 	dk = std::abs(lambda_paraVal) / xk * sin(phis_paraVal);
 
@@ -1691,7 +1691,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorATAT( )
 
         double xk = ( 1.0 + std::abs(lambda_perpVal) * std::abs(lambda_perpVal) ) / 2.;
        	ak = 1.0;
-	bk = - 1.0 * std::abs(lambda_perpVal) / xk * cos(phis_perpVal);
+	bk = -1.0 * std::abs(lambda_perpVal) / xk * cos(phis_perpVal);
 	ck = ( 1.0 - std::abs(lambda_perpVal) * std::abs(lambda_perpVal) ) / (2. * xk) ;
 	dk = - 1.0 * std::abs(lambda_perpVal) / xk * sin(phis_perpVal);
 
@@ -1705,7 +1705,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorATATInt( )
 
         double xk = ( 1.0 + std::abs(lambda_perpVal) * std::abs(lambda_perpVal) ) / 2.;
 	ak = 1.0;
-	bk = - 1.0 * std::abs(lambda_perpVal) / xk * cos(phis_perpVal);
+	bk = -1.0 * std::abs(lambda_perpVal) / xk * cos(phis_perpVal);
 	ck = ( 1.0 - std::abs(lambda_perpVal) * std::abs(lambda_perpVal) ) / (2. * xk) ;
 	dk = - 1.0 * std::abs(lambda_perpVal) / xk * sin(phis_perpVal);
 
@@ -1720,7 +1720,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorImAPAT( )
         double xk = (1.+std::abs(lambda_perpVal*lambda_paraVal)) / 2.;
 	ak = 1./ (2. * xk) *(sin(delta_perp - delta_para) - std::abs(lambda_perpVal*lambda_paraVal) 
 	* sin(delta_perp - delta_para - phis_perpVal + phis_paraVal));
-	bk = - 1./ (2. * xk) *(std::abs(lambda_perpVal) * sin(delta_perp - delta_para - phis_perpVal) 
+	bk = -1./ (2. * xk) *(std::abs(lambda_perpVal) * sin(delta_perp - delta_para - phis_perpVal) 
 	+ std::abs(lambda_paraVal) * sin(delta_para - delta_perp - phis_paraVal));
 	ck = 1./ (2. * xk)  *(sin(delta_perp - delta_para) + std::abs(lambda_perpVal*lambda_paraVal) 
  	* sin(delta_perp - delta_para - phis_perpVal + phis_paraVal));
@@ -1737,7 +1737,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorImAPATInt( )
         double xk = (1.+std::abs(lambda_perpVal*lambda_paraVal)) / 2.;
 	ak = 1./ (2. * xk) *(sin(delta_perp - delta_para) - std::abs(lambda_perpVal*lambda_paraVal) 
 	* sin(delta_perp - delta_para - phis_perpVal + phis_paraVal));
-	bk = - 1./ (2. * xk) *(std::abs(lambda_perpVal) * sin(delta_perp - delta_para - phis_perpVal) 
+	bk = -1./ (2. * xk) *(std::abs(lambda_perpVal) * sin(delta_perp - delta_para - phis_perpVal) 
 	+ std::abs(lambda_paraVal) * sin(delta_para - delta_perp - phis_paraVal));
 	ck = 1./ (2. * xk)  *(sin(delta_perp - delta_para) + std::abs(lambda_perpVal*lambda_paraVal) 
  	* sin(delta_perp - delta_para - phis_perpVal + phis_paraVal));
@@ -1753,14 +1753,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorReA0AP( )
 	double ak, bk, ck, dk;
        
         double xk = (1.+std::abs(lambda_zeroVal*lambda_paraVal)) / 2.;
-	ak = 1./ (2. * xk) *(cos(delta_para - delta_zero) + std::abs(lambda_zeroVal*lambda_paraVal) 
-	* cos(delta_para - delta_zero - phis_paraVal + phis_zeroVal));
-        bk = 1./ (2. * xk) *(std::abs(lambda_zeroVal) * cos(delta_para - delta_zero - phis_zeroVal) 
-        + std::abs(lambda_paraVal) * cos(delta_zero - delta_para - phis_paraVal));
-	ck = 1./ (2. * xk)  *(cos(delta_para - delta_zero) - std::abs(lambda_zeroVal*lambda_paraVal) 
-	* cos(delta_para - delta_zero - phis_paraVal + phis_zeroVal));
-        dk = - 1./ (2. * xk)  *(std::abs(lambda_zeroVal) * sin(delta_para - delta_zero - phis_zeroVal)
-        + std::abs(lambda_paraVal) * sin(delta_zero - delta_para - phis_paraVal));
+	ak = 1./ (2. * xk) *(cos(- delta_para + delta_zero) + std::abs(lambda_zeroVal*lambda_paraVal) 
+	* cos(- delta_para + delta_zero + phis_paraVal - phis_zeroVal));
+        bk = 1./ (2. * xk) *(std::abs(lambda_zeroVal) * cos(- delta_para + delta_zero - phis_zeroVal) 
+        + std::abs(lambda_paraVal) * cos(- delta_zero + delta_para - phis_paraVal));
+	ck = 1./ (2. * xk)  *(cos(- delta_para + delta_zero) - std::abs(lambda_zeroVal*lambda_paraVal) 
+	* cos(- delta_para + delta_zero + phis_paraVal - phis_zeroVal));
+        dk = - 1./ (2. * xk)  *(std::abs(lambda_zeroVal) * sin(- delta_para + delta_zero - phis_zeroVal)
+        + std::abs(lambda_paraVal) * sin(- delta_zero + delta_para - phis_paraVal));
 
 	return xk * calculateTimeFactor( ak, bk, ck, dk );
 }
@@ -1770,14 +1770,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorReA0APInt( )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_zeroVal*lambda_paraVal)) / 2.;
- 	ak = 1./ (2. * xk) *(cos(delta_para - delta_zero) + std::abs(lambda_zeroVal*lambda_paraVal) 
-	* cos(delta_para - delta_zero - phis_paraVal + phis_zeroVal));
-        bk = 1./ (2. * xk) *(std::abs(lambda_zeroVal) * cos(delta_para - delta_zero - phis_zeroVal) 
-        + std::abs(lambda_paraVal) * cos(delta_zero - delta_para - phis_paraVal));
-	ck = 1./ (2. * xk)  *(cos(delta_para - delta_zero) - std::abs(lambda_zeroVal*lambda_paraVal) 
-	* cos(delta_para - delta_zero - phis_paraVal + phis_zeroVal));
-        dk = - 1./ (2. * xk)  *(std::abs(lambda_zeroVal) * sin(delta_para - delta_zero - phis_zeroVal)
-        + std::abs(lambda_paraVal) * sin(delta_zero - delta_para - phis_paraVal));
+ 	ak = 1./ (2. * xk) *(cos(- delta_para + delta_zero) + std::abs(lambda_zeroVal*lambda_paraVal) 
+	* cos(- delta_para + delta_zero + phis_paraVal - phis_zeroVal));
+        bk = 1./ (2. * xk) *(std::abs(lambda_zeroVal) * cos(- delta_para + delta_zero - phis_zeroVal) 
+        + std::abs(lambda_paraVal) * cos(- delta_zero + delta_para - phis_paraVal));
+	ck = 1./ (2. * xk)  *(cos(- delta_para + delta_zero) - std::abs(lambda_zeroVal*lambda_paraVal) 
+	* cos(- delta_para + delta_zero + phis_paraVal - phis_zeroVal));
+        dk = - 1./ (2. * xk)  *(std::abs(lambda_zeroVal) * sin(- delta_para + delta_zero - phis_zeroVal)
+        + std::abs(lambda_paraVal) * sin(- delta_zero + delta_para - phis_paraVal));
 
 	return xk * calculateTimeFactorInt( ak, bk, ck, dk );
 
@@ -1788,14 +1788,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorImA0AT(  )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_zeroVal*lambda_perpVal)) / 2.;
-	ak = 1./ (2. * xk) *(sin(delta_perp - delta_zero) - std::abs(lambda_zeroVal*lambda_perpVal) 
-	* sin(delta_perp - delta_zero - phis_perpVal + phis_zeroVal));
-        bk = - 1./ (2. * xk) *(std::abs(lambda_zeroVal) * sin(delta_perp - delta_zero - phis_zeroVal)
-        + std::abs(lambda_perpVal) * sin(delta_zero - delta_perp - phis_perpVal));
-	ck = 1./ (2. * xk)  *(sin(delta_perp - delta_zero) + std::abs(lambda_zeroVal*lambda_perpVal) 
- 	* sin(delta_perp - delta_zero - phis_perpVal + phis_zeroVal));
-        dk = - 1./ (2. * xk)  *(std::abs(lambda_zeroVal) * cos(delta_perp - delta_zero + phis_zeroVal)
-         + std::abs(lambda_perpVal) * cos(delta_zero - delta_perp + phis_perpVal));
+	ak = - 1./ (2. * xk) *(sin(- delta_perp + delta_zero) - std::abs(lambda_zeroVal*lambda_perpVal) 
+	* sin(- delta_perp + delta_zero + phis_perpVal - phis_zeroVal));
+        bk = -1./ (2. * xk) *(std::abs(lambda_zeroVal) * sin(- delta_perp + delta_zero - phis_zeroVal)
+        + std::abs(lambda_perpVal) * sin(- delta_zero + delta_perp - phis_perpVal));
+	ck = - 1./ (2. * xk)  *(sin(- delta_perp + delta_zero) + std::abs(lambda_zeroVal*lambda_perpVal) 
+ 	* sin(- delta_perp + delta_zero + phis_perpVal - phis_zeroVal));
+        dk = - 1./ (2. * xk)  *(std::abs(lambda_zeroVal) * cos(- delta_perp + delta_zero - phis_zeroVal)
+         + std::abs(lambda_perpVal) * cos(- delta_zero + delta_perp - phis_perpVal));
 
 	return xk * calculateTimeFactor( ak, bk, ck, dk );
 }
@@ -1805,14 +1805,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorImA0ATInt( )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_zeroVal*lambda_perpVal)) / 2.;
-	ak = 1./ (2. * xk) *(sin(delta_perp - delta_zero) - std::abs(lambda_zeroVal*lambda_perpVal) 
-	* sin(delta_perp - delta_zero - phis_perpVal + phis_zeroVal));
-        bk = - 1./ (2. * xk) *(std::abs(lambda_zeroVal) * sin(delta_perp - delta_zero - phis_zeroVal)
-        + std::abs(lambda_perpVal) * sin(delta_zero - delta_perp - phis_perpVal));
-	ck = 1./ (2. * xk)  *(sin(delta_perp - delta_zero) + std::abs(lambda_zeroVal*lambda_perpVal) 
- 	* sin(delta_perp - delta_zero - phis_perpVal + phis_zeroVal));
-        dk = - 1./ (2. * xk)  *(std::abs(lambda_zeroVal) * cos(delta_perp - delta_zero + phis_zeroVal)
-        + std::abs(lambda_perpVal) * cos(delta_zero - delta_perp + phis_perpVal));
+	ak = - 1./ (2. * xk) *(sin(- delta_perp + delta_zero) - std::abs(lambda_zeroVal*lambda_perpVal) 
+	* sin(- delta_perp + delta_zero + phis_perpVal - phis_zeroVal));
+        bk = -1./ (2. * xk) *(std::abs(lambda_zeroVal) * sin(- delta_perp + delta_zero - phis_zeroVal)
+        + std::abs(lambda_perpVal) * sin(- delta_zero + delta_perp - phis_perpVal));
+	ck = - 1./ (2. * xk)  *(- sin(delta_perp + delta_zero) + std::abs(lambda_zeroVal*lambda_perpVal) 
+ 	* sin(- delta_perp + delta_zero + phis_perpVal - phis_zeroVal));
+        dk = - 1./ (2. * xk)  *(std::abs(lambda_zeroVal) * cos(- delta_perp + delta_zero - phis_zeroVal)
+        + std::abs(lambda_perpVal) * cos(- delta_zero + delta_perp - phis_perpVal));
 
 	return xk * calculateTimeFactorInt( ak, bk, ck, dk );
 
@@ -1824,7 +1824,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorASAS( )
 
         double xk = ( 1.0 + std::abs(lambda_SVal) * std::abs(lambda_SVal) ) / 2.;
 	ak = 1.0;
-	bk = - 1.0 * std::abs(lambda_SVal) / xk	* cos(phis_SVal);
+	bk = -1.0 * std::abs(lambda_SVal) / xk	* cos(phis_SVal);
 	ck = ( 1.0 - std::abs(lambda_SVal) * std::abs(lambda_SVal) ) / ( 2. * xk );
 	dk = - 1.0 * std::abs(lambda_SVal) / xk * sin(phis_SVal);
 
@@ -1838,7 +1838,7 @@ double Bs2JpsiPhi_Signal_v9::timeFactorASASInt( )
 
         double xk = ( 1.0 + std::abs(lambda_SVal) * std::abs(lambda_SVal) ) / 2.;
 	ak = 1.0;
-	bk = - 1.0 * std::abs(lambda_SVal) / xk	* cos(phis_SVal);
+	bk = -1.0 * std::abs(lambda_SVal) / xk	* cos(phis_SVal);
 	ck = ( 1.0 - std::abs(lambda_SVal) * std::abs(lambda_SVal) ) / ( 2. * xk );
 	dk = - 1.0 * std::abs(lambda_SVal) / xk * sin(phis_SVal);
 
@@ -1851,14 +1851,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorReASAP( )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_SVal*lambda_paraVal)) / 2.;
-	ak = 1./ (2. * xk ) *(cos(delta_para - delta_s) - std::abs(lambda_SVal*lambda_paraVal) 
-	* cos(delta_para - delta_s - phis_paraVal + phis_SVal));
-	bk = - 1./ (2. * xk) *(std::abs(lambda_SVal) * cos(delta_para - delta_s + phis_SVal) 
-	- std::abs(lambda_paraVal) * cos(delta_s - delta_para + phis_paraVal));
-	ck = 1./ (2. * xk)  *(cos(delta_para - delta_s) + std::abs(lambda_SVal*lambda_paraVal) 
-	* cos(delta_para - delta_s - phis_paraVal + phis_SVal));
-	dk = - 1./ (2. * xk)  *(std::abs(lambda_SVal) * sin(delta_para - delta_s + phis_SVal) 
-	- std::abs(lambda_paraVal) * sin(delta_s - delta_para + phis_paraVal));
+	ak = 1./ (2. * xk ) *(cos(- delta_para + delta_s) - std::abs(lambda_SVal*lambda_paraVal) 
+	* cos(- delta_para + delta_s + phis_paraVal - phis_SVal));
+	bk = -1./ (2. * xk) *(std::abs(lambda_SVal) * cos(- delta_para + delta_s - phis_SVal) 
+	- std::abs(lambda_paraVal) * cos(- delta_s + delta_para - phis_paraVal));
+	ck = 1./ (2. * xk)  *(cos(- delta_para + delta_s) + std::abs(lambda_SVal*lambda_paraVal) 
+	* cos(- delta_para + delta_s + phis_paraVal - phis_SVal));
+	dk = 1./ (2. * xk)  *(std::abs(lambda_SVal) * sin(- delta_para + delta_s - phis_SVal) 
+	- std::abs(lambda_paraVal) * sin(- delta_s + delta_para - phis_paraVal));
 
 	return xk * calculateTimeFactor( ak, bk, ck, dk );
 }
@@ -1868,14 +1868,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorReASAPInt( )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_SVal*lambda_paraVal)) / 2.;
-	ak = 1./ (2. * xk) *(cos(delta_para - delta_s) - std::abs(lambda_SVal*lambda_paraVal) 
-	* cos(delta_para - delta_s - phis_paraVal + phis_SVal));
-	bk = - 1./ (2. * xk) *(std::abs(lambda_SVal) * cos(delta_para - delta_s + phis_SVal) 
-	- std::abs(lambda_paraVal) * cos(delta_s - delta_para + phis_paraVal));
-	ck = 1./ (2. * xk)  *(cos(delta_para - delta_s) + std::abs(lambda_SVal*lambda_paraVal) 
-	* cos(delta_para - delta_s - phis_paraVal + phis_SVal));
-	dk = - 1./ (2. * xk)  *(std::abs(lambda_SVal) * sin(delta_para - delta_s + phis_SVal) 
-	- std::abs(lambda_paraVal) * sin(delta_s - delta_para + phis_paraVal));
+	ak = 1./ (2. * xk) *(cos(- delta_para + delta_s) - std::abs(lambda_SVal*lambda_paraVal) 
+	* cos(- delta_para + delta_s + phis_paraVal - phis_SVal));
+	bk = -1./ (2. * xk) *(std::abs(lambda_SVal) * cos(- delta_para + delta_s - phis_SVal) 
+	- std::abs(lambda_paraVal) * cos(- delta_s + delta_para - phis_paraVal));
+	ck = 1./ (2. * xk)  *(cos(- delta_para + delta_s) + std::abs(lambda_SVal*lambda_paraVal) 
+	* cos(- delta_para + delta_s + phis_paraVal - phis_SVal));
+	dk = 1./ (2. * xk)  *(std::abs(lambda_SVal) * sin(- delta_para + delta_s - phis_SVal) 
+	- std::abs(lambda_paraVal) * sin(- delta_s + delta_para - phis_paraVal));
 
 	return xk * calculateTimeFactorInt( ak, bk, ck, dk );
 }
@@ -1885,14 +1885,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorImASAT( )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_SVal*lambda_perpVal)) / 2.;
-	ak = 1./ (2. * xk) *(sin(delta_perp - delta_s) + std::abs(lambda_SVal*lambda_perpVal) 
-	* sin(delta_perp - delta_s - phis_perpVal + phis_SVal));
-	bk = - 1./ (2. * xk) *(std::abs(lambda_SVal) * sin(delta_perp - delta_s + phis_SVal) 
-	- std::abs(lambda_perpVal) * sin(delta_s - delta_perp + phis_perpVal));
-	ck = 1./ (2. * xk)  *(sin(delta_perp - delta_s) - std::abs(lambda_SVal*lambda_perpVal) 
- 	* sin(delta_perp - delta_s - phis_perpVal + phis_SVal));
-	dk = - 1./ (2. * xk)  *(- std::abs(lambda_SVal) * cos(delta_perp - delta_s + phis_SVal) 
-	+ std::abs(lambda_perpVal) * cos(delta_s - delta_perp + phis_perpVal));
+	ak = - 1./ (2. * xk) *(sin(- delta_perp + delta_s) + std::abs(lambda_SVal*lambda_perpVal) 
+	* sin(- delta_perp + delta_s + phis_perpVal - phis_SVal));
+	bk = 1./ (2. * xk) *(std::abs(lambda_SVal) * sin(- delta_perp + delta_s - phis_SVal) 
+	- std::abs(lambda_perpVal) * sin(- delta_s + delta_perp - phis_perpVal));
+	ck = - 1./ (2. * xk)  *(sin(- delta_perp + delta_s) - std::abs(lambda_SVal*lambda_perpVal) 
+ 	* sin(- delta_perp + delta_s + phis_perpVal - phis_SVal));
+	dk = - 1./ (2. * xk)  *(- std::abs(lambda_SVal) * cos(- delta_perp + delta_s - phis_SVal) 
+	+ std::abs(lambda_perpVal) * cos(- delta_s + delta_perp - phis_perpVal));
 
 	return xk * calculateTimeFactor( ak, bk, ck, dk );
 }
@@ -1902,14 +1902,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorImASATInt( )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_SVal*lambda_perpVal)) / 2.;
-    	ak = 1./ (2. * xk) *(sin(delta_perp - delta_s) + std::abs(lambda_SVal*lambda_perpVal) 
-	* sin(delta_perp - delta_s - phis_perpVal + phis_SVal));
-	bk = - 1./ (2. * xk) *(std::abs(lambda_SVal) * sin(delta_perp - delta_s + phis_SVal) 
-	- std::abs(lambda_perpVal) * sin(delta_s - delta_perp + phis_perpVal));
-	ck = 1./ (2. * xk)  *(sin(delta_perp - delta_s) - std::abs(lambda_SVal*lambda_perpVal) 
- 	* sin(delta_perp - delta_s - phis_perpVal + phis_SVal));
-	dk = - 1./ (2. * xk)  *(- std::abs(lambda_SVal) * cos(delta_perp - delta_s + phis_SVal) 
-	+ std::abs(lambda_perpVal) * cos(delta_s - delta_perp + phis_perpVal));
+    	ak = - 1./ (2. * xk) *(sin(- delta_perp + delta_s) + std::abs(lambda_SVal*lambda_perpVal) 
+	* sin(- delta_perp + delta_s + phis_perpVal - phis_SVal));
+	bk = 1./ (2. * xk) *(std::abs(lambda_SVal) * sin(- delta_perp + delta_s - phis_SVal) 
+	- std::abs(lambda_perpVal) * sin(- delta_s + delta_perp - phis_perpVal));
+	ck = - 1./ (2. * xk)  *(sin(- delta_perp + delta_s) - std::abs(lambda_SVal*lambda_perpVal) 
+ 	* sin(- delta_perp + delta_s + phis_perpVal - phis_SVal));
+	dk = - 1./ (2. * xk)  *(- std::abs(lambda_SVal) * cos(- delta_perp + delta_s - phis_SVal) 
+	+ std::abs(lambda_perpVal) * cos(- delta_s + delta_perp - phis_perpVal));
 
 	return xk * calculateTimeFactorInt( ak, bk, ck, dk );
 }
@@ -1919,14 +1919,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorReASA0( )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_SVal*lambda_zeroVal)) / 2.;
-	ak = 1./ (2. * xk) *(cos(delta_zero - delta_s) - std::abs(lambda_SVal*lambda_zeroVal) 
-	* cos(delta_zero - delta_s - phis_zeroVal + phis_SVal));
-	bk = - 1./ (2. * xk) *(std::abs(lambda_SVal) * cos(delta_zero - delta_s + phis_SVal) 
-	- std::abs(lambda_zeroVal) * cos(delta_s - delta_zero + phis_zeroVal));
-	ck = 1./ (2. * xk)  *(cos(delta_zero - delta_s) + std::abs(lambda_SVal*lambda_zeroVal) 
-	* cos(delta_zero - delta_s - phis_zeroVal + phis_SVal));
-	dk = - 1./ (2. * xk)  *(std::abs(lambda_SVal) * sin(delta_zero - delta_s + phis_SVal) 
-	- std::abs(lambda_zeroVal) * sin(delta_s - delta_zero + phis_zeroVal));
+	ak = 1./ (2. * xk) *(cos(- delta_zero + delta_s) - std::abs(lambda_SVal*lambda_zeroVal) 
+	* cos(- delta_zero + delta_s + phis_zeroVal - phis_SVal));
+	bk = -1./ (2. * xk) *(std::abs(lambda_SVal) * cos(- delta_zero + delta_s - phis_SVal) 
+	- std::abs(lambda_zeroVal) * cos(- delta_s + delta_zero - phis_zeroVal));
+	ck = 1./ (2. * xk)  *(cos(- delta_zero + delta_s) + std::abs(lambda_SVal*lambda_zeroVal) 
+	* cos(- delta_zero + delta_s + phis_zeroVal - phis_SVal));
+	dk = 1./ (2. * xk)  *(std::abs(lambda_SVal) * sin(- delta_zero + delta_s - phis_SVal) 
+	- std::abs(lambda_zeroVal) * sin(- delta_s + delta_zero - phis_zeroVal));
 
 	return xk * calculateTimeFactor( ak, bk, ck, dk );
 }
@@ -1936,14 +1936,14 @@ double Bs2JpsiPhi_Signal_v9::timeFactorReASA0Int( )
 	double ak, bk, ck, dk;
 
         double xk = (1.+std::abs(lambda_SVal*lambda_zeroVal)) / 2.;
-	ak = 1./ (2. * xk) *(cos(delta_zero - delta_s) - std::abs(lambda_SVal*lambda_zeroVal) 
-	* cos(delta_zero - delta_s - phis_zeroVal + phis_SVal));
-	bk = - 1./ (2. * xk) *(std::abs(lambda_SVal) * cos(delta_zero - delta_s + phis_SVal) 
-	- std::abs(lambda_zeroVal) * cos(delta_s - delta_zero + phis_zeroVal));
-	ck = 1./ (2. * xk)  *(cos(delta_zero - delta_s) + std::abs(lambda_SVal*lambda_zeroVal) 
-	* cos(delta_zero - delta_s - phis_zeroVal + phis_SVal));
-	dk = - 1./ (2. * xk)  *(std::abs(lambda_SVal) * sin(delta_zero - delta_s + phis_SVal) 
-	- std::abs(lambda_zeroVal) * sin(delta_s - delta_zero + phis_zeroVal));
+	ak = 1./ (2. * xk) *(cos(- delta_zero + delta_s) - std::abs(lambda_SVal*lambda_zeroVal) 
+	* cos(- delta_zero + delta_s + phis_zeroVal - phis_SVal));
+	bk = -1./ (2. * xk) *(std::abs(lambda_SVal) * cos(- delta_zero + delta_s - phis_SVal) 
+	- std::abs(lambda_zeroVal) * cos(- delta_s + delta_zero - phis_zeroVal));
+	ck = 1./ (2. * xk)  *(cos(- delta_zero + delta_s) + std::abs(lambda_SVal*lambda_zeroVal) 
+	* cos(- delta_zero + delta_s + phis_zeroVal - phis_SVal));
+	dk = 1./ (2. * xk)  *(std::abs(lambda_SVal) * sin(- delta_zero + delta_s - phis_SVal) 
+	- std::abs(lambda_zeroVal) * sin(- delta_s + delta_zero - phis_zeroVal));
 
 	return xk * calculateTimeFactorInt( ak, bk, ck, dk );
 }

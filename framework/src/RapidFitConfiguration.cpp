@@ -68,6 +68,7 @@ numberRepeats(),
 	GOF_Flag(),
 	StartAtCenterFlag(),
 	WeightDataSet(),
+	savePDFOutput(),
 	OutputLevelSet(),
 	saveFitXML(),
 	generateToyXML(),
@@ -158,6 +159,7 @@ numberRepeats(),
 		GOF_Flag=false;
 		StartAtCenterFlag=true;
 		WeightDataSet=false;
+		savePDFOutput=false;
 		OutputLevelSet=false;
 		saveFitXML=false;
 		generateToyXML=false;

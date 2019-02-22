@@ -411,6 +411,12 @@ void ResultFormatter::WriteOutputLatex( FitResult* OutputData )
 	outFile << justFit.str();
 	outFile.close();
 
+        outFile.open( output_folder+"/json.tex" );
+        stringstream json;
+        ResultFormatter::LatexJustFitResultJSON( OutputData, json );
+        outFile << json.str();
+        outFile.close();
+
 	outFile.open( output_folder+"/ToShare.tex" );
 	stringstream toShare;
 	ResultFormatter::LatexToShareResultTable( OutputData, toShare );
@@ -614,6 +620,29 @@ void ResultFormatter::LatexToShareResultTable( FitResult * OutputData, stringstr
 	}
 
 	ResultFormatter::TableFooter( latex );
+}
+
+void ResultFormatter::LatexJustFitResultJSON( FitResult * OutputData, stringstream& latex )
+{
+	latex << "{\n    \"Description:\": \"Contains the current polarity independent baseline result from Edinburgh\",\n    \"ResultSetLabel\": \"Edinburgh-Run2\",\n    \"Parameter\": [" << endl;
+	ResultParameterSet * outputParameters = OutputData->GetResultParameterSet();
+	vector<string> allNames = outputParameters->GetAllNames();
+	for( vector<string>::iterator nameIterator = allNames.begin(); nameIterator != allNames.end(); ++nameIterator )
+	{
+		ResultParameter * outputParameter = outputParameters->GetResultParameter( *nameIterator );
+		if( outputParameter->GetError() >= 0. )
+		{
+			double fitValue = outputParameter->GetValue();
+			double fitError = outputParameter->GetError();
+			string unit = outputParameter->GetUnit();
+			string name = *nameIterator;
+
+			latex << "        {\n            \"Name\": " << EdStyle::GetParamJSONName(name) << ",\n            \"Value\": "
+				<< setprecision(5) << fitValue << ",\n            \"Error\": " << setprecision(5) << fitError;
+		if (nameIterator != allNames.end()) latex << "\n        }," << endl;
+		}
+	}
+	latex << "\n        }\n    ]\n}" << endl;
 }
 
 void ResultFormatter::LatexJustFitResultTable( FitResult * OutputData, stringstream& latex )

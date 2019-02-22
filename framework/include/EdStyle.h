@@ -92,6 +92,10 @@ class EdStyle {
 		static TString GetParamRootUnit( TString );
 
 		/*!
+		 * @brief This is a wrapper to GetParamJSONName( string )
+		 */
+		static TString GetParamJSONName( TString );
+		/*!
 		 * @brief This is a wrapper to GetParamLatexName( string )
 		 */
 		static TString GetParamLatexName( TString );

@@ -152,6 +152,10 @@ double MistagCalib3fb::mistagBbar() const
 	{
 		returnValue = 0.;
 	}
+/*	if( returnValue < 0. )
+	{
+		returnValue = 0.;
+	}*/
 
 	return returnValue;
 }
@@ -165,8 +169,9 @@ double MistagCalib3fb::mistagOSBbar() const
 	else if( _mistagOS < 0. ) returnValue = 0.;
 	else returnValue = _mistagP0_OS-(_mistagDeltaP0_OS*0.5) + (_mistagP1_OS-(_mistagDeltaP1_OS*0.5))*( _mistagOS - (_mistagSetPoint_OS-(_mistagDeltaSetPoint_OS*0.5)) );
 
-	if( returnValue > 0.5 ) returnValue = 0.5;
-	else if( returnValue < 0. ) returnValue = 0.;
+/*	if( returnValue > 0.5 ) returnValue = 0.5;
+	else if( returnValue < 0. ) returnValue = 0.;*/
+	if( returnValue < 0. ) returnValue = 0.;
 	return returnValue;
 }
 
@@ -179,8 +184,9 @@ double MistagCalib3fb::mistagSSBbar() const
 	else if( _mistagSS < 0. ) returnValue = 0.;
 	else returnValue = _mistagP0_SS-(_mistagDeltaP0_SS*0.5) + (_mistagP1_SS-(_mistagDeltaP1_SS*0.5))*( _mistagSS - (_mistagSetPoint_SS-(_mistagDeltaSetPoint_SS*0.5)) );
 
-	if( returnValue > 0.5 ) returnValue = 0.5;
-	else if( returnValue < 0. ) returnValue = 0.;
+/*	if( returnValue > 0.5 ) returnValue = 0.5;
+	else if( returnValue < 0. ) returnValue = 0.;*/
+        if( returnValue < 0. ) returnValue = 0.;
 	return returnValue;
 }
 
@@ -193,8 +199,9 @@ double MistagCalib3fb::mistagOSB() const
 	else if( _mistagOS < 0. ) returnValue = 0.;
 	else returnValue = _mistagP0_OS+(_mistagDeltaP0_OS*0.5) + (_mistagP1_OS+(_mistagDeltaP1_OS*0.5))*( _mistagOS - (_mistagSetPoint_OS+(_mistagDeltaSetPoint_OS*0.5)) );
 
-	if( returnValue > 0.5 ) returnValue = 0.5;
-	else if( returnValue < 0. ) returnValue = 0.;
+/*	if( returnValue > 0.5 ) returnValue = 0.5;
+	else if( returnValue < 0. ) returnValue = 0.;*/
+        if( returnValue < 0. ) returnValue = 0.;
 	return returnValue;
 }
 
@@ -207,8 +214,9 @@ double MistagCalib3fb::mistagSSB() const
 	else if( _mistagSS < 0. ) returnValue = 0.;
 	else returnValue = _mistagP0_SS+(_mistagDeltaP0_SS*0.5) + (_mistagP1_SS+(_mistagDeltaP1_SS*0.5))*( _mistagSS - (_mistagSetPoint_SS+(_mistagDeltaSetPoint_SS*0.5)) );
 
-	if( returnValue > 0.5 ) returnValue = 0.5;
-	else if( returnValue < 0. ) returnValue = 0.;
+/*	if( returnValue > 0.5 ) returnValue = 0.5;
+	else if( returnValue < 0. ) returnValue = 0.;*/
+        if( returnValue < 0. ) returnValue = 0.;
 	return returnValue;
 }
 
@@ -237,6 +245,10 @@ double MistagCalib3fb::mistagB() const
 	{
 		returnValue = 0.;
 	}
+/*        if( returnValue < 0. )
+        {
+                returnValue = 0.;
+        }*/
 
 	return returnValue;
 }
@@ -309,7 +321,7 @@ double MistagCalib3fb::RealD1() const
 {
 	if( !_untagged )
 	{
-		return ( (1.+ _tagOS*(1.-2.*this->mistagOS()) ) * (1.+ _tagSS*(1.-2.*this->mistagSS())) + (1.-_tagOS*(1.-2.*this->mistagOS()) ) * (1.- _tagSS*(1.-2.*this->mistagSS())) );
+		return ( (1.+ _tagOS*(1.-2.*this->mistagOSB()) ) * (1.+ _tagSS*(1.-2.*this->mistagSSB())) + (1.-_tagOS*(1.-2.*this->mistagOSBbar()) ) * (1.- _tagSS*(1.-2.*this->mistagSSBbar())) );
 	}
 	else
 	{
@@ -321,7 +333,7 @@ double MistagCalib3fb::RealD2() const
 {
 	if( !_untagged )
 	{
-		return ( (1.+ _tagOS*(1.-2.*this->mistagOSOther()) ) * (1.+ _tagSS*(1.-2.*this->mistagSSOther())) - (1.- _tagOS*(1.-2.*this->mistagOSOther()) ) * (1.- _tagSS*(1.-2.*this->mistagSSOther())) );
+		return ( (1.+ _tagOS*(1.-2.*this->mistagOSB()) ) * (1.+ _tagSS*(1.-2.*this->mistagSSB())) - (1.- _tagOS*(1.-2.*this->mistagOSBbar()) ) * (1.- _tagSS*(1.-2.*this->mistagSSBbar())) );
 	}
 	else
 	{

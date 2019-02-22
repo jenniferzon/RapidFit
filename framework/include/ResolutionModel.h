@@ -26,6 +26,8 @@
 #include <string>
 #include <vector>
 
+#include "Mathematics.h"
+
 using namespace::std;
 
 //=======================================
@@ -68,6 +70,9 @@ class ResolutionModel : public IResolutionModel
 	private:
 
 		bool isCacheValid;
+    
+        bool usePolynomialAcceptance ;
+        Mathematics::ExpPolynomialAcceptance * expPoly ;
 
 		ObservableRef resScaleName;			// Scale to multiply e-by-e resolution
 		double resScale ;
@@ -75,6 +80,7 @@ class ResolutionModel : public IResolutionModel
 		ObservableRef eventResolutionName;  // Event-by-event resolution observable
 		double eventResolution ;
 
+		double stream(ifstream& stream);
 		virtual unsigned int numComponents(){return 1;};
 		virtual void requestComponent( unsigned int ){return;};
 

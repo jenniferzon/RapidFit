@@ -248,7 +248,6 @@ void OutputConfiguration::OutputFitResult( FitResult * TheResult )
 	//ResultFormatter::LatexOutputCovarianceMatrix(TheResult);
 
 	ResultFormatter::WriteOutputLatex(TheResult);
-
 	//Output any calculated contours
 	ResultFormatter::PlotFitContours( TheResult, contourFileName );
 

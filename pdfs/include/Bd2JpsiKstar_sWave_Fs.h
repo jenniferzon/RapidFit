@@ -35,6 +35,7 @@ class Bd2JpsiKstar_sWave_Fs : public BasePDF
 		virtual double EvaluateComponent(DataPoint*, ComponentRef*);
 		virtual bool SetPhysicsParameters(ParameterSet*);
 		double NormAnglesOnlyForAcceptanceWeights(DataPoint*, PhaseSpaceBoundary*);
+		double HelpNormAngles(DataPoint*, PhaseSpaceBoundary*);
 		//Return a list of parameters not to be integrated
                 virtual vector<string> GetDoNotIntegrateList();
 		double angularFactor();

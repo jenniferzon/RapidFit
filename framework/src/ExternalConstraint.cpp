@@ -26,6 +26,16 @@ ExternalConstraint::ExternalConstraint( string NewName, double NewValue, double 
 		wantedParameters.push_back("gamma");
 		wantedParameters.push_back("deltaGamma");
 	}
+	else if( name == "rho_P0_P1_SS" )
+	{
+		wantedParameters.push_back( "mistagP0_SS" );
+		wantedParameters.push_back( "mistagP1_SS" );
+	}
+	else if( name == "rho_P0_P1_OS" )
+	{
+		wantedParameters.push_back( "mistagP0_OS" );
+		wantedParameters.push_back( "mistagP1_OS" );
+	}
 	else if( name == "CosSqPlusSinSq" )
 	{
 		wantedParameters.push_back( "cosphis" );
@@ -203,6 +213,54 @@ double ExternalConstraint::GetChi2() const
 			returnable += chisq;
 		}
 	}
+	else if( name == "rho_P0_P1_SS" )
+	{
+		double mistagP0 = internalParameterSet->GetPhysicsParameter( "mistagP0_SS" )->GetValue();
+		double mistagP0_err = 0.0112;
+		double mistagP1 = internalParameterSet->GetPhysicsParameter( "mistagP1_SS" )->GetValue();
+		double mistagP1_err = 0.1329;
+		double rho = -0.227;
+		double v[2];
+		v[0] = mistagP0 - 0.4325;
+		v[1] = mistagP1 - 0.9241;
+		double E[2][2];
+		E[0][0] = 1. * (mistagP0_err * mistagP0_err);
+		E[1][1] = 1. * (mistagP1_err * mistagP1_err);
+		E[0][1] = rho * (mistagP0_err * mistagP1_err);
+		E[1][0] = rho * (mistagP0_err * mistagP1_err);
+		double chisq = 0.;
+		for (int ix = 0; ix < 2; ++ix){
+			for (int iy = 0; iy < 2; ++ iy) {
+				chisq += v[ix] * E[ix][iy] * v[iy];
+			}
+		}
+		returnable += chisq;
+
+	}	
+	else if( name == "rho_P0_P1_OS" )
+	{
+		double mistagP0 = internalParameterSet->GetPhysicsParameter( "mistagP0_OS" )->GetValue();
+		double mistagP0_err = 0.0029;
+		double mistagP1 = internalParameterSet->GetPhysicsParameter( "mistagP1_OS" )->GetValue();
+       		double mistagP1_err = 0.0272;
+		double rho = 0.008;
+		double v[2];
+		v[0] = mistagP0 - 0.3890;
+		v[1] = mistagP1 - 0.8486;
+		double E[2][2];
+		E[0][0] = 1. * (mistagP0_err * mistagP0_err);
+		E[1][1] = 1. * (mistagP1_err * mistagP1_err);
+		E[0][1] = rho * (mistagP0_err * mistagP1_err);
+		E[1][0] = rho * (mistagP0_err * mistagP1_err);
+		double chisq = 0.;
+		for (int ix = 0; ix < 2; ++ix){
+			for (int iy = 0; iy < 2; ++ iy) {
+				chisq += v[ix] * E[ix][iy] * v[iy];
+       			}
+		}
+		returnable += chisq;
+
+	}
 	else if( name == "ATOTAL" )
 	{
             double Aperpsq = internalParameterSet->GetPhysicsParameter( "Aperp_sq" )->GetValue();
@@ -230,6 +288,7 @@ double ExternalConstraint::GetChi2() const
 		double gaussSqrt = (parameterValue - value ) / error;
 		returnable += gaussSqrt * gaussSqrt;
 	}
+	//std::cout << "Returnable " << returnable << std::endl;
 	return returnable;
 }
 

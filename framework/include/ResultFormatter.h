@@ -42,7 +42,7 @@ class ResultFormatter
 		static void AddBranch( TTree* inputTree, const string& BranchName, const vector<double>& DoubleData );
 
 		static void WriteOutputLatex( FitResult* OutputData );
-
+		static void LatexJustFitResultJSON( FitResult * OutputData, stringstream& latex );
 		static void LatexJustFitResultTable( FitResult * OutputData, stringstream& latex );
 		static void LatexToShareResultTable( FitResult * OutputData, stringstream& latex );
 		static void LatexSimpleFitResultTable( FitResult * OutputData, stringstream& latex );

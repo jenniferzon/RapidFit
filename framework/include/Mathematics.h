@@ -44,6 +44,7 @@ namespace Mathematics
 	static const double root_3 = sqrt(3.);
 	static const double root_2 = sqrt(2.);
 	static const double rootpi= sqrt(_pi) ; //sqrt(atan2(0.,-1.));
+    static const complex<double> rootminus1(0.,1.);
 
 	inline double SQRT_2(){ return sqrt_2; }//=sqrt(2.);
 	inline double _Over_SQRT_2(){ return _over_sqrt_2; }// = 1./SQRT_2;
@@ -119,6 +120,48 @@ namespace Mathematics
 	vector<double> calculateAcceptanceWeights( IDataSet * dataSet, IPDF * PDF );
     int calculateAcceptanceCoefficients( IDataSet * dataSet, IPDF * PDF );
     void calculateAcceptanceWeightsWithSwave( IDataSet * dataSet, IPDF * PDF );
+    
+    
+    //New functions for spline code
+    complex<double> splmom_kn( int n, complex<double> z ) ;
+    double splmom_fact(int n) ;
+    complex<double> splmom_erfc( complex<double> z ) ;
+    complex<double> splmom_mn( int n, double x1, double x2, complex<double> z,
+                              double theErf1, double theErf2,
+                              complex<double> theErfc1, complex<double> theErfc2,
+                              complex<double> theExp1, complex<double>theExp2 ) ;
+    complex<double> splmom_integral_n( int n,  double res, double x1, double x2, complex<double> z ,
+                                      double theErf1, double theErf2,
+                                      complex<double> theErfc1, complex<double> theErfc2,
+                                      complex<double> theExp1, complex<double>theExp2 ) ;
+
+    //................................................................................
+    // This was invented to deal with the introduction of 3rd order splines for the acceptance
+    // The result is the acceptance being divided into a set od sectors
+    // For each sector there are a set of 3rd order polynomial coefficients
+    class ExpPolynomialAcceptance {
+        
+    private:
+        const int nseg ;
+        const int ncoeff  ;
+        std::vector<double> knots ;
+        std::vector<std::vector<double>> coeffs ;
+        double value( double t ) ;
+        complex<double> integral( double tlo, double thi, complex<double> q, double res) ;
+        
+    public:
+        ExpPolynomialAcceptance() ;
+        ExpPolynomialAcceptance( std::vector<double> knots, std::vector<std::vector<double>> coeffs ) ;
+        void show() ;
+        double Exp(double t, double gamma, double resolution) ;
+        double ExpInt(double tlow, double thigh, double gamma, double resolution);
+        double ExpCos(double t, double gamma, double deltaM, double resolution);
+        double ExpCosInt(double tlow, double thigh, double gamma, double deltaM, double resolution );
+        double ExpSin(double t, double gamma, double deltaM, double resolution);
+        double ExpSinInt(double tlow, double thigh, double gamma, double deltaM, double resolution );
+    };
+    
+    
 
 }
 

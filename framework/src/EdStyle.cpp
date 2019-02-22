@@ -602,6 +602,291 @@ TString EdStyle::GetParamRootName( string Param_Name_orig )
 	return returnable_string;
 }
 
+TString EdStyle::GetParamJSONName( TString Param_Name_orig )
+{
+	TString Param_Name = Param_Name_orig;
+	TString Name("\"");
+	int suffix = Test_Suffix( Param_Name_orig );
+	if( suffix != -1 )
+	{
+		Param_Name = Remove_Suffix( Param_Name_orig );
+	}
+	if( Param_Name == "LLscan" ) {
+
+		Name.Append("\\Delta\\text{LL}");
+	}
+	if( Param_Name == "gamma" ) {
+
+		Name.Append("gammaD");
+
+	} else if ( Param_Name == "GsGd" ) {
+
+		Name.Append("DGsd");
+
+	} else if ( Param_Name == "deltaGamma" ) {
+
+		Name.Append("DGs");
+
+	} else if ( Param_Name == "Azero_sq" ) {
+
+		Name.Append("A0");
+
+	} else if ( Param_Name == "Aperp_sq" ) {
+
+		Name.Append("Aperp");
+
+	} else if ( Param_Name == "Apara_sq" ) {
+
+		Name.Append("Apara");
+
+	} else if ( Param_Name == "As_sq" ) {
+
+		Name.Append("AS");
+
+	} else if ( Param_Name == "F_s" ) {
+
+		Name.Append("FS");
+
+	} else if ( Param_Name == "F_s990" ) {
+
+		Name.Append("FS1");
+
+	} else if ( Param_Name == "F_s1008" ) {
+
+		Name.Append("FS2");
+
+	} else if ( Param_Name == "F_s1016" ) {
+
+		Name.Append("FS3");
+
+	} else if ( Param_Name == "F_s1020" ) {
+
+		Name.Append("FS4");
+
+	} else if ( Param_Name == "F_s1024" ) {
+
+		Name.Append("FS5");
+
+	} else if ( Param_Name == "F_s1032" ) {
+
+		Name.Append("FS6");
+
+	} else if ( Param_Name == "delta_para" ) {
+
+		Name.Append("deltaPar");
+
+	} else if ( Param_Name == "delta_perp" ) {
+
+		Name.Append("deltaPerp");
+
+	} else if ( Param_Name == "delta_s" ) {
+
+		Name.Append("deltaS");
+
+	} else if ( Param_Name == "delta_s990" ) {
+
+		Name.Append("deltaS1");
+
+	} else if ( Param_Name == "delta_s1008" ) {
+
+		Name.Append("deltaS2");
+
+	} else if ( Param_Name == "delta_s1016" ) {
+
+		Name.Append("deltaS3");
+
+	} else if ( Param_Name == "delta_s1020" ) {
+
+		Name.Append("deltaS4");
+
+	} else if ( Param_Name == "delta_s1024" ) {
+
+		Name.Append("deltaS5");
+
+	} else if ( Param_Name == "delta_s1032" ) {
+
+		Name.Append("deltaS6");
+
+	} else if ( Param_Name == "Phi_s" ) {
+
+		Name.Append("phis");
+
+	} else if ( Param_Name == "Phis_zero" ) {
+
+		Name.Append("phis0");
+
+	} else if ( Param_Name == "Phis_para" ) {
+
+		Name.Append("phispar");
+
+	} else if ( Param_Name == "Phis_perp" ) {
+
+		Name.Append("phisperp");
+
+	} else if ( Param_Name == "Phis_S" ) {
+
+		Name.Append("phisS");
+
+	} else if ( Param_Name == "lambda_zero" ) {
+
+		Name.Append("lambda0");
+
+	} else if ( Param_Name == "lambda_para" ) {
+
+		Name.Append("lambdapar");
+
+	} else if ( Param_Name == "lambda_perp" ) {
+
+		Name.Append("lambdaperp");
+
+	} else if ( Param_Name == "lambda_S" ) {
+
+		Name.Append("lambdaS");
+
+	} else if (Param_Name =="deltaM" ) {
+
+		Name.Append( "Dm");
+
+	} else if (Param_Name =="delta_zero") {
+
+		Name.Append("delta0");
+
+	} else if ( Param_Name == "mistagP1_OS" ) {
+
+		Name.Append("p1os");
+
+	} else if ( Param_Name == "mistagDeltaP1_OS" ) {
+
+		Name.Append("dp1os");
+
+	} else if ( Param_Name == "mistagP0_OS" ) {
+
+		Name.Append("p0os");
+
+	} else if ( Param_Name == "mistagDeltaP0_OS" ) {
+
+		Name.Append("dp0os");
+
+	} else if ( Param_Name == "mistagSetPoint_OS" ) {
+
+		Name.Append("eta_bar_os");
+
+	} else if ( Param_Name == "mistagDeltaSetPoint_OS" ) {
+
+		Name.Append("deta_bar_os");
+
+	} else if ( Param_Name == "mistagP1_SS" ) {
+
+		Name.Append("p1ss");
+
+	} else if ( Param_Name == "mistagDeltaP1_SS" ) {
+
+		Name.Append("dp1ss");
+
+	} else if ( Param_Name == "mistagP0_SS" ) {
+
+		Name.Append("p0ss");
+
+	} else if ( Param_Name == "mistagDeltaP0_SS" ) {
+
+		Name.Append("dp0ss");
+
+	} else if ( Param_Name == "mistagSetPoint_SS" ) {
+
+		Name.Append("eta_bar_ss");
+
+	} else if ( Param_Name == "mistagDeltaSetPoint_SS" ) {
+
+		Name.Append("deta_bar_ss");
+
+	} else if ( Param_Name == "mistagP1_OSSS" ) {
+
+		Name.Append("p1osss");
+
+	} else if ( Param_Name == "mistagDeltaP1_OSSS" ) {
+
+		Name.Append("dp1osss");
+
+	} else if ( Param_Name == "mistagP0_OSSS" ) {
+
+		Name.Append("p0osss");
+
+	} else if ( Param_Name == "mistagDeltaP0_OSSS" ) {
+
+		Name.Append("dp0osss");
+
+	} else if ( Param_Name == "mistagSetPoint_OSSS" ) {
+
+		Name.Append("eta_bar_osss");
+
+	} else if ( Param_Name == "mistagDeltaSetPoint_OSSS" ) {
+
+		Name.Append("deta_bar_osss");
+
+	} else if ( Param_Name == "Csp" ) {
+
+		Name.Append("Csp");
+
+	} else if ( Param_Name == "Csp990" ) {
+
+		Name.Append("Csp1");
+
+	} else if ( Param_Name == "Csp1008" ) {
+
+		Name.Append("Csp2");
+
+	} else if ( Param_Name == "Csp1016" ) {
+
+		Name.Append("Csp3");
+
+	} else if ( Param_Name == "Csp1020" ) {
+
+		Name.Append("Csp4");
+
+	} else if ( Param_Name == "Csp1024" ) {
+
+		Name.Append("Csp5");
+
+	} else if ( Param_Name == "Csp1032" ) {
+
+		Name.Append("Csp6");
+
+	} else if ( Param_Name == "mistagP0" ) {
+
+		Name.Append("p0");
+
+	} else if ( Param_Name == "mistagP1" ) {
+
+		Name.Append("p1");
+
+	} else if ( Param_Name == "mistagSetPoint" ) {
+
+		Name.Append("eta_bar");
+
+	} else if ( Param_Name == "mistagDeltaP1" ) {
+
+		Name.Append("dp1" );
+
+	} else if ( Param_Name == "mistagDeltaP0" ) {
+
+		Name.Append("dp0" );
+
+	} else if ( Param_Name == "mistagDeltaSetPoint" ) {
+
+		Name.Append("deta_bar");
+
+        } else Name.Append(StringProcessing::LatexSafe( Param_Name ));
+
+        Name.Append("\"");
+
+        if( suffix != -1 )
+        {
+                Name.Append( Get_Suffix( Param_Name_orig ) );
+        }
+
+        return Name;
+}
+
 TString EdStyle::GetParamLatexName( string Param_Name_orig )
 {
 	TString Param_Name = Param_Name_orig;

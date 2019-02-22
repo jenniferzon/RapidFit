@@ -131,6 +131,8 @@ string GenerateXML( RapidFitConfiguration* config, bool isForToys );
 
 void WeightThisDataSet( RapidFitConfiguration* config );
 
+void savePDFOutput( RapidFitConfiguration* config );
+
 void BuildTheseConstraints( RapidFitConfiguration* config );
 
 void MakeOutputFolder( RapidFitConfiguration* config );

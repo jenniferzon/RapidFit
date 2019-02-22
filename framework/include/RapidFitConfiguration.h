@@ -93,6 +93,7 @@ class RapidFitConfiguration
 		bool GOF_Flag;
 		bool StartAtCenterFlag;
 		bool WeightDataSet;
+		bool savePDFOutput;
 		bool OutputLevelSet;
 		bool saveFitXML;
 		bool generateToyXML;

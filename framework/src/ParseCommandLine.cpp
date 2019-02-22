@@ -123,7 +123,9 @@ void ParseCommandLine::RapidFitHelp()
 	cout << endl;
 	cout << "--WeightDataSet" << endl;
 	cout << "       If a Preprocessor section is present in the XML the input data is weighted and the results are stored in the relevant file" << endl;
-
+	cout << endl;
+	cout << "--savePDFOutput" << endl;
+	cout << "       PDF Results are computed, weighted and saved in root file" << endl;
 	cout << endl;
 	cout << "--saveFitXML" << endl;
 	cout << "       Generates an XML roughly equivalent to the one you just input with final fit parameters and errors stored as fixed in the ParameterSet, good for projections" << endl;
@@ -664,6 +666,7 @@ int ParseCommandLine::ParseThisCommandLine( RapidFitConfiguration& config, vecto
 		else if( currentArgument == "--MCStudy" )				{	config.MCStudyFlag = true;				}
 		else if( currentArgument == "--ForceContinue" )				{	config.Force_Continue_Flag = true;			}
 		else if( currentArgument == "--DontStartAtCenter" )			{	config.StartAtCenterFlag = false;			}
+		else if( currentArgument == "--savePDFOutput" ) 			{       config.savePDFOutput=true;				}
 		else if( currentArgument == "--WeightDataSet" ) 			{       config.WeightDataSet=true;				}
 		else if( currentArgument == "--saveFitXML" )				{	config.saveFitXML = true;				}
 		else if( currentArgument == "--generateToyXML" )			{	config.generateToyXML = true;				}

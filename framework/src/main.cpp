@@ -22,6 +22,7 @@
 #include "MultiXMLConfigReader.h"
 #include "ResultFormatter.h"
 #include "InputParsing.h"
+#include "Bd2JpsiKstar_sWave.h"
 #include "RapidFitIntegrator.h"
 #include "MakeFoam.h"
 #include "PerEventAngularAcceptance.h"
@@ -609,6 +610,60 @@ void WeightThisDataSet( RapidFitConfiguration* config )
 	}
 }
 
+void savePDFOutput( RapidFitConfiguration* config )
+{
+	cout << "Saving PDF output" << endl;
+	//              Generate Weighted Datasets
+	//vector<PDFWithData*> PDFs = config->GetPDFsAndData();
+	vector<IDataSet*> DataSetsVector;
+
+        for( unsigned int i=0; i< config->pdfsAndData.size(); ++i )
+        {
+                cout << endl << "Getting DataSet " << i+1 << endl;
+
+                IDataSet* inputData = config->pdfsAndData[i]->GetDataSet();
+                DataSetsVector.push_back(inputData);
+        }
+
+        double val;
+        TFile* outFile = new TFile("PDFResult_gen.root","RECREATE");
+        outFile->cd();
+    TTree* outTree = new TTree("DecayTree","Results for PDF");
+        outTree->Branch("value", &val, "value/D");
+	for( unsigned int i=0; i< DataSetsVector.size(); ++i )
+	{
+		cout << endl << "Filling root file with dataset " << i+1 << endl;
+		IPDF* inputPDF = config->pdfsAndData[i]->GetPDF();
+
+                for( unsigned int j=0; j< (unsigned) DataSetsVector[i]->GetDataNumber(); ++j )
+                {
+			//cout << endl << "WeightName " << config->GetWeightName() << endl;
+ 			IDataSet* DataSet = DataSetsVector[i];
+  	                DataPoint * event  = DataSet->GetDataPoint( j );
+			PhaseSpaceBoundary * boundary = DataSet->GetBoundary();
+			//double weight = event->GetObservable("gb_weights_3")->GetValue();
+
+			val = inputPDF->Evaluate( event );
+			outTree->Fill();
+                }
+	}
+
+	outTree->Write();
+	outFile->Save();
+	outFile->Close();
+
+	//              Delete them as they're local objects
+	for( unsigned int i=0; i< config->pdfsAndData.size(); ++i )
+	{
+		while( !DataSetsVector.empty() )
+		{
+			if( DataSetsVector.back() != NULL ) delete DataSetsVector.back();
+			DataSetsVector.pop_back();
+		}
+	}
+
+}
+
 void BuildTheseConstraints( RapidFitConfiguration* config )
 {
 	stringstream full_xml;
@@ -843,6 +898,11 @@ int PerformMainFit( RapidFitConfiguration* config )
 	if( config->WeightDataSet == true )
 	{
 		WeightThisDataSet( config );
+	}
+
+	if( config->savePDFOutput == true )
+	{
+		savePDFOutput( config );
 	}
 
 	//ResultFormatter::FlatNTuplePullPlots( string("Global_Fit.root"), GlobalFitResult );

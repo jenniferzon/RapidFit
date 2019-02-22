@@ -6,13 +6,13 @@ CC=g++
 
 
 #		ROOT
-TEMPCFLAGS   = -L$(ROOTSYS)/lib $(shell $(ROOTSYS)/bin/root-config --cflags)
+TEMPCFLAGS   = -L$(ROOTSYS)/lib $(shell root-config --cflags)
 
 #		Include Root files as system headers as they're NOT standards complient and we do not want to waste time fixing them!
 #		ROOT has some broken backwards compatability for OSX so won't claim to be a set of system headers
-ROOTCFLAGS   = -L$(ROOTSYS)/lib $(shell $(ROOTSYS)/bin/root-config --cflags | awk -F "-I" '{print $$1" -isystem"$$2}' )
-ROOTLIBS     = -L$(ROOTSYS)/lib $(shell $(ROOTSYS)/bin/root-config --libs)
-ROOTGLIBS    = -L$(ROOTSYS)/lib $(shell $(ROOTSYS)/bin/root-config --glibs)
+ROOTCFLAGS   = -L$(ROOTSYS)/lib $(shell root-config --cflags | awk -F "-I" '{print $$1" -isystem"$$2}' )
+ROOTLIBS     = -L$(ROOTSYS)/lib $(shell root-config --libs)
+ROOTGLIBS    = -L$(ROOTSYS)/lib $(shell root-config --glibs)
 
 #               On some Systems with Mathmore compiled, sometimes things need to be resolved against it... I don't know why
 EXTRA_ROOTLIBS=-lTreePlayer -lHtml -lThread -lMinuit -lMinuit2 -lRooFit -lRooStats -lRooFitCore -lFoam $(shell if [ "$(shell root-config --features | grep mathmore)" == "" ]; then echo "" ; else echo "-lMathMore" ; fi)
